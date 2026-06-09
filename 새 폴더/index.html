@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>행운의 로또 번호 추천기 🍀</title>
+  <meta name="description" content="버튼 하나로 로또 6/45 행운의 번호를 추천받아 보세요!" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <span class="badge">🍀 LOTTO 6 / 45</span>
+    <h1>행운의 <span class="accent">로또 번호</span> 추천기</h1>
+    <p class="subtitle">버튼을 누르면 5게임 번호를 한 번에 추천해 드려요!</p>
+
+    <div id="gameList"></div>
+    <p class="bonus-label" id="bonusLabel">아래 버튼을 눌러 시작하세요 ✨</p>
+
+    <button class="btn" id="generateBtn">🎲 번호 추천받기</button>
+    <div class="actions">
+      <button class="btn-ghost" id="copyBtn">📋 전체 복사</button>
+      <button class="btn-ghost" id="resetBtn">↺ 초기화</button>
+    </div>
+
+    <p class="count" id="count">지금까지 0번 추천했어요</p>
+    <p class="footer-note">※ 재미로 즐기는 추천입니다. 당첨을 보장하지 않습니다.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
