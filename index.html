@@ -6,8 +6,19 @@
   <title>행운의 로또 번호 추천기 🍀</title>
   <meta name="description" content="버튼 하나로 로또 6/45 행운의 번호를 추천받아 보세요!" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // 테마 깜빡임(FOUC) 방지: 화면이 그려지기 전에 저장된 테마를 먼저 적용
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || ((window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" aria-label="다크/라이트 모드 전환" title="다크/라이트 모드 전환">🌙</button>
+
   <main class="card">
     <span class="badge">🍀 LOTTO 6 / 45</span>
     <h1>행운의 <span class="accent">로또 번호</span> 추천기</h1>

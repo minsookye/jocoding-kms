@@ -137,3 +137,22 @@ resetBtn.addEventListener('click', () => {
   generateBtn.textContent = '🎲 번호 추천받기';
   lastGames = [];
 });
+
+// ===== 다크 / 라이트 모드 =====
+const themeToggle = document.getElementById('themeToggle');
+
+function applyThemeIcon() {
+  const current = document.documentElement.getAttribute('data-theme');
+  // 현재 다크면 '라이트로 전환'(☀️), 현재 라이트면 '다크로 전환'(🌙) 아이콘 표시
+  themeToggle.textContent = current === 'dark' ? '☀️' : '🌙';
+}
+
+applyThemeIcon();
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  applyThemeIcon();
+});
