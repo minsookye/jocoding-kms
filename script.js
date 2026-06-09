@@ -155,4 +155,42 @@ themeToggle.addEventListener('click', () => {
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
   applyThemeIcon();
+  setGiscusTheme(next); // 댓글(giscus) 테마도 함께 전환
 });
+
+// ===== 댓글 (giscus) =====
+function currentTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+}
+
+// 현재 페이지 테마에 맞춰 giscus 위젯을 동적으로 삽입
+(function loadGiscus() {
+  const container = document.getElementById('comments');
+  if (!container) return;
+  const s = document.createElement('script');
+  s.src = 'https://giscus.app/client.js';
+  s.setAttribute('data-repo', 'minsookye/jocoding-kms');
+  s.setAttribute('data-repo-id', 'R_kgDOS1Dung');
+  s.setAttribute('data-category', 'Announcements');
+  s.setAttribute('data-category-id', 'DIC_kwDOS1Duns4C-zhQ');
+  s.setAttribute('data-mapping', 'pathname');
+  s.setAttribute('data-strict', '0');
+  s.setAttribute('data-reactions-enabled', '1');
+  s.setAttribute('data-emit-metadata', '0');
+  s.setAttribute('data-input-position', 'top');
+  s.setAttribute('data-theme', currentTheme());
+  s.setAttribute('data-lang', 'ko');
+  s.crossOrigin = 'anonymous';
+  s.async = true;
+  container.appendChild(s);
+})();
+
+// 테마 토글 시 giscus iframe에 메시지를 보내 테마 동기화
+function setGiscusTheme(theme) {
+  const iframe = document.querySelector('iframe.giscus-frame');
+  if (!iframe || !iframe.contentWindow) return;
+  iframe.contentWindow.postMessage(
+    { giscus: { setConfig: { theme } } },
+    'https://giscus.app'
+  );
+}

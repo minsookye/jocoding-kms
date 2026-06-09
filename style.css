@@ -62,11 +62,14 @@ body {
   font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
+  justify-content: flex-start;
+  gap: 28px;
+  padding: 48px 24px;
   color: var(--text);
   background: var(--bg);
+  background-attachment: fixed;
   overflow-x: hidden;
   transition: background 0.4s ease, color 0.3s ease;
 }
@@ -262,4 +265,33 @@ h1 .accent {
   margin-top: 8px;
   font-size: 0.78rem;
   color: var(--text-faint);
+}
+
+/* ===== 댓글 (giscus) ===== */
+.comments-wrap {
+  width: min(620px, 100%);
+}
+
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+#comments {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 20px 22px;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--card-shadow);
+  min-height: 120px;
+  transition: background 0.4s ease, border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* giscus iframe이 영역 폭에 꽉 차도록 */
+#comments .giscus,
+#comments .giscus-frame {
+  width: 100%;
 }
